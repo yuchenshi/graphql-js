@@ -33,6 +33,8 @@ export const testSchema: GraphQLSchema = buildSchema(`
     DOWN
   }
 
+  scalar GeoPoint
+
   type Dog implements Pet & Mammal & Canine {
     name(surname: Boolean): String
     nickname: String
@@ -41,6 +43,7 @@ export const testSchema: GraphQLSchema = buildSchema(`
     doesKnowCommand(dogCommand: DogCommand): Boolean
     isHouseTrained(atOtherHomes: Boolean = true): Boolean
     isAtLocation(x: Int, y: Int): Boolean
+    distanceFrom(loc: GeoPoint): Float
     mother: Dog
     father: Dog
   }
